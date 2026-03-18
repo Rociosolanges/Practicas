@@ -1,6 +1,3 @@
-
-    ////////////////////////////// hecho /////////////////////////////////////////
-
 1- Hacer un contador que muestra el recuento actual.
     - Botones para incrementar y decrementar el conteo.
     - Muestra la cantidad de clics para las acciones de incremento y disminución, restableciéndose después de alcanzar los 10 clics.
@@ -29,5 +26,43 @@
     - Proporciona una forma sencilla de acceder y administrar la lista de empleados en un solo lugar.
     - Se puede agregar un nuevo empleado con detalles válidos junto con una fuente de imagen opcional proporcionada en el formulario de adición, y también se puede eliminar de la base de datos.
 
-    ////////////////////////////// hacer /////////////////////////////////////////
+
+
+
+////////// crear BD ////////////////////////
+
+CREATE DATABASE IF NOT EXISTS tarea_rocio
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+ 
+USE tarea_rocio;
+ 
+CREATE TABLE IF NOT EXISTS users (
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    nombre        VARCHAR(100)  NOT NULL,
+    edad          INT           NOT NULL DEFAULT 0,
+    ciudad        VARCHAR(100)  NOT NULL DEFAULT '',
+    departamento  VARCHAR(100)  NOT NULL DEFAULT '',
+    salario       DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    estado        ENUM('Activo','Inactivo','Suspendido') NOT NULL DEFAULT 'Activo',
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ 
+-- Datos de ejemplo
+INSERT INTO users (nombre, edad, ciudad, departamento, salario, estado) VALUES
+('Ana García',      28, 'Madrid',     'Marketing',    2800.00, 'Activo'),
+('Carlos López',    35, 'Barcelona',  'Desarrollo',   3500.00, 'Activo'),
+('María Rodríguez', 42, 'Sevilla',    'RRHH',         2200.00, 'Inactivo'),
+('Pedro Martínez',  31, 'Valencia',   'Ventas',       2600.00, 'Activo'),
+('Laura Sánchez',   26, 'Bilbao',     'Diseño',       2400.00, 'Activo'),
+('Diego Fernández', 38, 'Zaragoza',   'Finanzas',     3100.00, 'Suspendido'),
+('Sofía Jiménez',   29, 'Málaga',     'Desarrollo',   3200.00, 'Activo'),
+('Andrés Torres',   45, 'Alicante',   'Dirección',    4500.00, 'Activo');
+
+ALTER TABLE users
+  ADD COLUMN email    VARCHAR(150) NOT NULL DEFAULT '',
+  ADD COLUMN telefono VARCHAR(20)  NOT NULL DEFAULT '';
+
+ALTER TABLE users 
+ADD COLUMN fecha_nacimiento DATE NULL DEFAULT NULL ;
 

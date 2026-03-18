@@ -32,9 +32,3 @@ ALTER TABLE users
 
 ALTER TABLE users 
 ADD COLUMN fecha_nacimiento DATE NULL DEFAULT NULL ;
-
-
-
-
-lo tienes que hacer paso a paso 
-primero del 1 al 3 despues el 5 despues del 7 al 16  despues del 18 al 27 despues del 29 al 31 despues del 33 al 34 
